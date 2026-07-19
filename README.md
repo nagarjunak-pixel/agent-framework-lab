@@ -38,6 +38,13 @@ on your own Ollama — no API keys, no cost, no cloud.
 - `e2e_mcp.py` + `mcp_server.py` — **(C) MCP integration**: a tiny stdio MCP server
   exposing `data_quality_flag`, called by the agent via `MCPStdioTool`. Same protocol
   Claude Code / Cursor use — extends to thousands of real MCP servers.
+- `openrouter_demo.py` — **OpenRouter-backed agent** (your API key, gitignored in `.env`).
+  Uses the Chat Completions API with real tool-calling (e.g. `get_revenue_growth`).
+  NOTE: MS Agent Framework's `OpenAIChatClient` is Responses-API-only and OpenRouter
+  does NOT support the Responses API, so this demo uses the `openai` SDK transport
+  directly — the correct working path for OpenRouter. Set `OPENROUTER_MODEL` to override
+  (default `deepseek/deepseek-v4-flash`).
+- `.env` — your OpenRouter API key. **GITIGNORED — never committed.**
 - `data/sample_metrics.csv` — sample dataset the pipelines analyze.
 - `report.md` — artifact written by the pipelines (overwritten each run).
 
